@@ -3714,3 +3714,6 @@ box-shadow: 4px 3px 4px -1px rgba(214,214,255,1);
   min-width: 165px;
   min-height: 165px;
 }
+th,tr,thead{
+    text-align: center;
+}

@@ -13,7 +13,7 @@ var tbl_tramite;
 function listar_tramite() {
     var fechainicio = $('#fecha_inicio').val()
     var fechafin = $('#fecha_fin').val()
-    let idusuario = document.getElementById('txtprincipalid').value;
+    let idusuario = document.getElementById('txtprincipalarea').value;
     tbl_tramite = $("#tabla_tramite").DataTable({
         "ordering": false,
         "bLengthChange": true,

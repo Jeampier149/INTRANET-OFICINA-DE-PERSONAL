@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-lg-2">
                        &nbsp;
-                        <button class="btn btn-primary" style="width:100%" ><i class="glyphicon glyphicon-search"> </i>  Docs Enviados</button>
+                        <button class="btn btn-primary"  onclick="cargar_contenido('contenido_principal','tramite_enviado.php')"style="width:100%" ><i class="glyphicon glyphicon-search"> </i>  Docs Enviados</button>
                     </div>
                     <div class="col-lg-2">
                        &nbsp;

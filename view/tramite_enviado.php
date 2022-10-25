@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-lg-2">
                      
-                       <button class="btn btn-primary" style="width: 100%;" onclick="">Nuevo</button>
+                       <button class="btn btn-primary" style="width: 100%;" onclick="cargar_contenido('contenido_principal','registro_tramite.php')"">Nuevo</button>
                     </div>
                 </div>
                 <table id="tabla_tramite_enviado" class="display responsive table" style="width:100%">

@@ -48,7 +48,7 @@ if (!isset($_SESSION['S_ID'])) {
           <input type="text" id="txtprincipalid" value="<?php echo $_SESSION['S_ID']; ?>" hidden>
           <input type="text" id="txtprincipalusu" value="<?php echo $_SESSION['S_USU']; ?>" hidden>
           <input type="text" id="txtprincipalrol" value="<?php echo $_SESSION['S_ROL']; ?>" hidden>
-          <input type="text" id="txtprincipalarea" value="<?php echo $_SESSION['S_AREA']; ?>"hidden >
+          <input type="text" id="txtprincipalarea" value="<?php echo $_SESSION['S_AREA']; ?>" hidden >
           <!-- notificaciones -->
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep" aria-expanded="false"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
@@ -151,7 +151,7 @@ if (!isset($_SESSION['S_ID'])) {
             <li class="menu-header">Secciones</li>
             <?php if ($_SESSION['S_AREA'] == 6 || $_SESSION['S_ROL'] == 'Administrador') { ?>
               <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a onclick="cambiar(6)" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                   <span>Remuneraciones</span></a>
                 <ul class="dropdown-menu">
                 <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_area.php')">Bandeja de documentos</a></li>
@@ -163,7 +163,7 @@ if (!isset($_SESSION['S_ID'])) {
             <?php } ?>
             <?php if ($_SESSION['S_AREA'] == '4' || $_SESSION['S_ROL'] == 'Administrador') { ?>
               <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a onclick="cambiar(4)"  class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                   <span>Programacion</span></a>
                 <ul class="dropdown-menu">
                 <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_area.php')">Bandeja de documentos</a></li>
@@ -174,7 +174,7 @@ if (!isset($_SESSION['S_ID'])) {
             <?php } ?>
             <?php if ($_SESSION['S_AREA'] == 2 || $_SESSION['S_ROL'] == 'Administrador') { ?>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+              <a onclick="cambiar(2)"  class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                 <span>Oficina Administrativa</span></a>
               <ul class="dropdown-menu">
               <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_area.php')">Bandeja de documentos</a></li>
@@ -186,7 +186,7 @@ if (!isset($_SESSION['S_ID'])) {
 
             <?php if ($_SESSION['S_AREA'] == 1 || $_SESSION['S_ROL'] == 'Administrador') { ?>
               <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a onclick="cambiar(1)"  class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                   <span>Bienestar</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_area.php')">Bandeja de documentos</a></li>
@@ -199,7 +199,7 @@ if (!isset($_SESSION['S_ID'])) {
 
             <?php if ($_SESSION['S_AREA'] == 5 || $_SESSION['S_ROL'] == 'Administrador') { ?>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+              <a onclick="cambiar(5)"  class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                 <span>Seguridad y Salud</span></a>
               <ul class="dropdown-menu">
               <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_area.php')">Bandeja de documentos</a></li>
@@ -263,9 +263,13 @@ if (!isset($_SESSION['S_ID'])) {
     function cargar_contenido(contenedor, contenido) {
       $("#" + contenedor).load(contenido);
     }
+    function cambiar(id){
+      let status=document.querySelector('#txtprincipalarea').value=id
+    }
     traerDatosUsuario()
-  </script>
 
+  </script>
+  
 
   <!-- Page Specific JS File -->
 </body>

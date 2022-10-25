@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-lg-2">
                        &nbsp;
-                        <button class="btn btn-primary" style="width:100%" onclick="listar_tramite()"><i class="glyphicon glyphicon-search"> </i> Buscar</button>
+                        <button class="btn btn-primary" style="width:100%" onclick="listar_scan()"><i class="glyphicon glyphicon-search"> </i> Buscar</button>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -34,7 +34,7 @@
                         <button class="btn btn-primary" style="width: 100%;" onclick="abrir_modal()">Nuevo</button>
                     </div>
                 </div>
-                <table id="tabla_scan" class="display responsive table" style="width:100%">
+                <table id="tabla_scan" class="display responsive  table" style="width:100%">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -42,7 +42,7 @@
                             <th>Tipo Doc</th>
                             <th>Asunto</th>
                             <th>fecha de registro</th>
-                            <th>Acciones</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <tbody>

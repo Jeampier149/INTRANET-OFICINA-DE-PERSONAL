@@ -74,7 +74,7 @@
             <div class="col-6 mt-2">
               <label for="">ROL</label>
               <select class="js-example-basic-single" id="select_rol" style="width:100%">
-                <option value="Secretario (a)">SECRETARIO(A)</option>
+                <option value="Personal">PERSONAL</option>
                 <option value="Administrador">ADMINISTRADOR</option>
               </select>
             </div>

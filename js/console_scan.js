@@ -56,14 +56,13 @@ function listar_scan() {
         "columns": [
             { "defaultContent": "" },
             { "data": "nro_doc" },
-            { "data": "tipo_doc" },
+            { "data": "tipodo_descripcion" },
             { "data": "asunto_doc" },
             { "data": "fechare_doc" },
-            { "defaultContent": `<button  type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> Editar</button> `}
+            { "defaultContent": `<button  type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> Editar</button>
+                                 <button class='descargar btn btn-primary' download><i class="fas fa-download"></i> Descargar</button>`}
 
         ],
-
-
         select: true
     });
     tbl_scan.on('draw.dt', function () {
@@ -131,12 +130,9 @@ function registrar_scan() {
             if (resp > 0) {
                 if (resp == 1) {
                     Swal.fire("Mensaje de Confirmacion", "Documento guardado correctamente", "success");
-
                 } else {
                     return Swal.fire("Mensaje de Advertencia", "El documento ya existe en la base de datos ", "warning");
                 }
-
-
             } else {
                 return Swal.fire("Mensaje de Error", "No se pudo guardar el documento", "error");
             }
@@ -145,3 +141,28 @@ function registrar_scan() {
     })
 }
 
+$('#tabla_scan').on('click','.editar',function(){
+	var data = tbl_scan.row($(this).parents('tr')).data();//En tamaño escritorio
+	if(tbl_scan.row(this).child.isShown()){
+		var data = tbl_scan.row(this).data();
+	}//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
+    $("#modal_editar").modal('show');
+    document.getElementById('txt_idusuario').value=data.usu_id;
+    $("#select_empleado_editar").select2().val(data.empleado_id).trigger('change.select2');
+    $("#select_area_editar").select2().val(data.area_id).trigger('change.select2');
+    $("#select_rol_editar").select2().val(data.usu_rol).trigger('change.select2');
+})
+$('#tabla_scan').on('click', '.descargar', function () {
+    let data = tbl_scan.row($(this).parents('tr')).data();
+    if (tbl_scan.row(this).child.isShown()) {
+        data = tbl_scan.row(this).data();
+    }
+
+    window.open(`../${data.ruta}`);
+     
+     
+
+    
+
+
+})
