@@ -118,7 +118,7 @@
             <div class="col-6">
               <label for="">ROL</label>
               <select class="js-example-basic-single" id="select_rol_editar" style="width:100%">
-                <option value="Secretario (a)">SECRETARIO(A)</option>
+                <option value="Secretario (a)">PERSONAL</option>
                 <option value="Administrador">ADMINISTRADOR</option>
               </select>
             </div>
@@ -133,31 +133,7 @@
 </div>    
 
     <!-- Modal -->
-    <div class="modal fade" id="modal_contra"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">EDITAR CONTRASEÑA DE USUARIO</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-12">
-                <label for="">CONTRASEÑA</label>
-                <input type="password" class="form-control" id="txt_contra_nueva">
-                <input type="text" id="txt_idusuario_contra" hidden>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" onclick="Modificar_Usuario_Contra()">MODIFICAR</button>
-      </div>
-    </div>
-  </div>
-</div>    
+
 <!-- Modal -->
 <script>
 

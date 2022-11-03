@@ -91,8 +91,8 @@ switch ($_REQUEST['tipo']) {
 
         break;
     case 'traer_data_usuario':
-        $id=htmlspecialchars($_POST['usuario'],ENT_QUOTES,'UTF-8');
-        $consulta=$MU->Traer_Datos_Usuario($id);
+        $id = htmlspecialchars($_POST['usuario'], ENT_QUOTES, 'UTF-8');
+        $consulta = $MU->Traer_Datos_Usuario($id);
         echo json_encode($consulta);
 
         break;
@@ -100,5 +100,22 @@ switch ($_REQUEST['tipo']) {
         session_start();
         session_destroy();
         header('Location: ../index.php');
+        break;
+    case 'actualizar_img_profile':
+        $usuario = htmlspecialchars($_POST['usuario'], ENT_QUOTES, 'UTF-8');
+        $nombre_archivo = htmlspecialchars($_POST['nombre_archivo'], ENT_QUOTES, 'UTF-8');
+        $imagen_actual=htmlspecialchars($_POST['img-actual'], ENT_QUOTES, 'UTF-8');
+        if (is_array($_FILES) && count($_FILES) > 0) {
+            unlink('../assets/img/empleados/'.$imagen_actual);
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], "../assets/img/empleados/" . $nombre_archivo)) {
+                $ruta = "assets/img/empleados/" . $nombre_archivo;
+                $consulta = $MU->editar_imagen_profile($usuario, $ruta);
+                echo $consulta;
+            } else {
+                echo 0;
+            }
+        } else {
+            echo 0;
+        }
         break;
 }

@@ -4,7 +4,7 @@
     class Modelo_TramiteArea extends conexionBD{
 
 
-        public function Registrar_Tramite($iddo,$orig,$dest,$desc,$idusu,$ruta,$tipo){
+        public function Registrar_Tramite($iddo,$orig,$dest,$desc,$idusu,$ruta,$tip){
             $c = conexionBD::conexionPDO();
             $sql = "CALL SP_REGISTRAR_TRAMITE_DERIVAR(?,?,?,?,?,?,?)";
             $arreglo = array();
@@ -15,7 +15,7 @@
             $query -> bindParam(4,$desc);
             $query -> bindParam(5,$idusu);
             $query -> bindParam(6,$ruta);   
-            $query -> bindParam(7,$tipo);       
+            $query -> bindParam(7,$tip);       
             $resul = $query->execute();
             if($resul){
                 return 1;

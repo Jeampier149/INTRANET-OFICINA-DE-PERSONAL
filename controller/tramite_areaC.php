@@ -42,20 +42,20 @@
             $dest = strtoupper(htmlspecialchars($_POST['dest'],ENT_QUOTES,'UTF-8'));
             $desc = strtoupper(htmlspecialchars($_POST['desc'],ENT_QUOTES,'UTF-8'));
             $idusu = strtoupper(htmlspecialchars($_POST['idusu'],ENT_QUOTES,'UTF-8'));
-            $tipo = strtoupper(htmlspecialchars($_POST['tipo'],ENT_QUOTES,'UTF-8'));
+            $tip = strtoupper(htmlspecialchars($_POST['tip'],ENT_QUOTES,'UTF-8'));
     
             $nombrearchivo = strtoupper(htmlspecialchars($_POST['nombrearchivo'],ENT_QUOTES,'UTF-8'));
             if(isset($nombrearchivo)){
                 $ruta="";
             }else{
-                $ruta='controller/doc_area/'.$nombrearchivo;
+                $ruta='controller/doc/'.$nombrearchivo;
             }
             
-            $consulta = $MU->Registrar_Tramite($iddo,$orig,$dest,$desc,$idusu,$ruta,$tipo);
+            $consulta = $MU->Registrar_Tramite($iddo,$orig,$dest,$desc,$idusu,$ruta,$tip);
             echo $consulta;
             if($consulta==1){
                 if(!isset($nombrearchivo)){
-                    if(move_uploaded_file($_FILES['archivoobj']['tmp_name'],"doc_area/".$nombrearchivo));
+                    if(move_uploaded_file($_FILES['archivoobj']['tmp_name'],"doc/".$nombrearchivo));
                 }
             }
             break;

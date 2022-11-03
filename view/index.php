@@ -124,8 +124,8 @@ if (!isset($_SESSION['S_ID'])) {
               <a onclick="cargar_contenido('contenido_principal','profile.php')" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Perfil
               </a>
-              <a href="" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Configuracion
+              <a onclick="modal_pass()"class="dropdown-item has-icon">
+                <i class="fas fa-cog"></i> Cambiar Contraseña
               </a>
               <div class="dropdown-divider"></div>
               <a href="../controller/usuarioC.php?tipo=cerrar_sesion" class="dropdown-item has-icon text-danger">
@@ -241,6 +241,31 @@ if (!isset($_SESSION['S_ID'])) {
     </div>
   </div>
 
+  <div class="modal fade" id="modal_contra"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">EDITAR CONTRASEÑA DE USUARIO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <label for="">CONTRASEÑA</label>
+                <input type="password" class="form-control" id="txt_contra_nueva">
+                <input type="text" id="txt_idusuario_contra" hidden>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" onclick="Modificar_Usuario_Contra()">MODIFICAR</button>
+      </div>
+    </div>
+  </div>
+</div>    
   <!-- General JS Scripts -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -267,7 +292,7 @@ if (!isset($_SESSION['S_ID'])) {
       let status=document.querySelector('#txtprincipalarea').value=id
     }
     traerDatosUsuario()
-
+  
   </script>
   
 

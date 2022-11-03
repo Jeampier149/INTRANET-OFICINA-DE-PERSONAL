@@ -36,18 +36,16 @@ function listar_tramite() {
         },
         "columns": [
             { "data": "documento_id" },
+            { "data": "doc_nrodocumento" },
             { "data": "tipodo_descripcion" },
-            { "data": "REMITENTE" },
             { "data": "origen" },
-            { "data": "destino" },
-            { "defaultContent": `<button class='mas btn btn-primary btn-sm'><i class="fas fa-calendar-plus"></i></button>` },
-            { "defaultContent": "<button class='seguimiento btn btn-success btn-sm'><i class='fa fa-search'></i></button>" },
+            { "defaultContent": `<button class='mas btn btn-primary btn-sm'><i class="fas fa-calendar-plus"></i> ver</button>` },
 
             {
                 "data": "doc_estatus",
                 render: function (data, type, row) {
                     if (data == 'PENDIENTE') {
-                        return '<span class="badge bg-warning">PENDIENTE</span>';
+                        return '<span class="badge badge-warning">PENDIENTE</span>'
                     } else if (data == 'RECHAZADO') {
                         return '<span class="badge bg-danger">RECHAZADO</span>';
                     } else {
@@ -110,35 +108,13 @@ $('#tabla_tramite').on('click', '.mas', function () {
         var data = tbl_tramite.row(this).data();
     }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
     $("#modal_mas").modal('show');
-    document.getElementById('lbl_titulo_datos').innerHTML = 'DATOS DEL TRAMITE ' + data.documento_id;
-    document.getElementById('txt_ndocumento').value = data.doc_nrodocumento;
-    document.getElementById('txt_folio').value = data.doc_folio;
-    document.getElementById('txt_asunto').value = data.doc_asunto;
-    $("#select_area_p").select2().val(data.area_origen).trigger('change.select2');
-    $("#select_area_d").select2().val(data.area_destino).trigger('change.select2');
-    $("#select_tipo").select2().val(data.tipodocumento_id).trigger('change.select2');
+     document.querySelector('#remitente').innerHTML=data.REMITENTE
+     document.querySelector('#asunto_mas').innerHTML=data.doc_asunto
+     document.querySelector('#dow').setAttribute('href',`../${data.doc_archivo}`)
 
-    document.getElementById('txt_dni').value = data.doc_dniremitente;
-    document.getElementById('txt_nom').value = data.doc_nombreremitente;
-    document.getElementById('txt_apepat').value = data.doc_apepatremitente;
-    document.getElementById('txt_apemat').value = data.doc_apematremitente;
-    document.getElementById('txt_celular').value = data.doc_celularremitente;
-    document.getElementById('txt_email').value = data.doc_emailremitente;
-    document.getElementById('txt_dire').value = data.doc_direccionremitente;
-    if (data.doc_representacion == "A Nombre Propio") {
-        $("#rad_presentacion1").prop('checked', true);
-    }
-
-    if (data.doc_representacion == "A Otra Persona Natural") {
-        $("#rad_presentacion2").prop('checked', true);
-    }
-
-    if (data.doc_representacion == "Persona Jurídica") {
-        $("#rad_presentacion3").prop('checked', true);
-    }
-
-
+   
 })
+
 
 
 
@@ -178,7 +154,7 @@ function Registrar_Derivacion() {
     formData.append("idusu", idusu);
     formData.append("nombrearchivo", nombrearchivo);
     formData.append("archivoobj", archivoobj);
-    formData.append("tipo", tipo);
+    formData.append("tip", tipo);
     $.ajax({
         url: "../controller/tramite_areaC.php?tipo=registro",
         type: 'POST',
@@ -186,13 +162,13 @@ function Registrar_Derivacion() {
         contentType: false,
         processData: false,
         success: function (resp) {
-            if (resp.length > 0) {
-                Swal.fire("Mensaje de Confirmacion", "Tramite Derivado o Finalizado", "success").then((value) => {
+            if(resp.length>0){
+                Swal.fire("Mensaje de Confirmacion","Tramite Derivado o Finalizado","success").then((value)=>{
                     $("#modal_derivar").modal('hide');
                     tbl_tramite.ajax.reload();
                 });
-            } else {
-                Swal.fire("Mensaje de Advertencia", "No se pudo completar el procedo", "warning");
+            }else{
+                Swal.fire("Mensaje de Advertencia","No se pudo completar el proceSo","warning");
             }
         }
     });

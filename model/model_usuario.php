@@ -86,6 +86,21 @@
             }
           //  conexionBD::cerrar_conexion();
         }  
+        public function editar_imagen_profile($usuario,$ruta){
+            $c = conexionBD::conexionPDO();
+            $sql = "CALL SP_MODIFICAR_IMAGEN_PROFILE(?,?)";
+            $arreglo = array();
+            $query  = $c->prepare($sql);
+            $query -> bindParam(1,$usuario);
+            $query -> bindParam(2,$ruta);
+            $resul = $query->execute();
+            if($resul){
+                return 1;
+            }else{
+                return 0;
+            }
+          //  conexionBD::cerrar_conexion();
+        } 
 
         public function Listar_Usuario(){
             $c = conexionBD::conexionPDO();

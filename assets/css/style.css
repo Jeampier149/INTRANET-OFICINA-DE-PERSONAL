@@ -3672,6 +3672,9 @@ body.layout-3 .main-wrapper {
   background-color: #8E8CB8;
   
 }
+a{
+  cursor: pointer;
+}
 .bod{
   background-image:url(../../fondo.jpg);
   background-size: cover;
@@ -3716,4 +3719,7 @@ box-shadow: 4px 3px 4px -1px rgba(214,214,255,1);
 }
 th,tr,thead{
     text-align: center;
+}
+#modal_mas td {
+  text-align: justify;
 }
