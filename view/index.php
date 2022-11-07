@@ -232,7 +232,7 @@ if (!isset($_SESSION['S_ID'])) {
           <div class="card sombrear">
             <div class="card-body">
               <div class="contenido mb-4" id="contenido_principal">
-
+             
               </div>
             </div>
           </div>
@@ -292,7 +292,7 @@ if (!isset($_SESSION['S_ID'])) {
       let status=document.querySelector('#txtprincipalarea').value=id
     }
     traerDatosUsuario()
-  
+    traerDatosProfile()
   </script>
   
 

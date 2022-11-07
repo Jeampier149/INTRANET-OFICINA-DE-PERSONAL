@@ -40,7 +40,7 @@ function listar_tramite() {
             { "data": "tipodo_descripcion" },
             { "data": "origen" },
             { "defaultContent": `<button class='mas btn btn-primary btn-sm'><i class="fas fa-calendar-plus"></i> ver</button>` },
-
+            {"defaultContent":"<button class='seguimiento btn btn-success btn-sm'><i class='fa fa-search'></i></button>"},
             {
                 "data": "doc_estatus",
                 render: function (data, type, row) {
@@ -91,29 +91,6 @@ $('#tabla_tramite').on('click', '.derivar', function () {
     document.getElementById('txt_idareorigen').value = data.area_destino;
 })
 
-$('#tabla_tramite').on('click', '.seguimiento', function () {
-    var data = tbl_tramite.row($(this).parents('tr')).data();//En tamaño escritorio
-    if (tbl_tramite.row(this).child.isShown()) {
-        var data = tbl_tramite.row(this).data();
-    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
-    $("#modal_seguimiento").modal('show');
-    document.getElementById('lbl_titulo').innerHTML = "SEGUIMIENTO DEL TRAMITE " + data.documento_id;
-    listar_seguimiento_tramite(data.documento_id);
-
-})
-
-$('#tabla_tramite').on('click', '.mas', function () {
-    var data = tbl_tramite.row($(this).parents('tr')).data();//En tamaño escritorio
-    if (tbl_tramite.row(this).child.isShown()) {
-        var data = tbl_tramite.row(this).data();
-    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
-    $("#modal_mas").modal('show');
-     document.querySelector('#remitente').innerHTML=data.REMITENTE
-     document.querySelector('#asunto_mas').innerHTML=data.doc_asunto
-     document.querySelector('#dow').setAttribute('href',`../${data.doc_archivo}`)
-
-   
-})
 
 
 
@@ -142,7 +119,7 @@ function Registrar_Derivacion() {
     } else {
         let f = new Date();
         let extension = arc.split('.').pop();//DOCUMENTO.PPT
-        nombrearchivo = "ARCH" + f.getDate() + "" + (f.getMonth() + 1) + "" + f.getFullYear() + "" + f.getHours() + "" + f.getMilliseconds() + "." + extension;
+        nombrearchivo = "ARCH"+tipo + f.getDate() + "" + (f.getMonth() + 1) + "" + f.getFullYear() + "" + f.getHours() + "" + f.getMilliseconds() + "." + extension;
     }
     let formData = new FormData();
     let archivoobj = $("#txt_documento_de")[0].files[0];//El objeto del archivo adjuntado
@@ -289,9 +266,6 @@ function Registrar_Tramite() {
     formData.append("apm", apm);
     formData.append("cel", cel);
     formData.append("ema", ema);
-
-
-
     //////DATOS DEL DOCUMENTO
     formData.append("arp", arp);
     formData.append("ard", ard);
@@ -360,7 +334,7 @@ function listar_seguimiento_tramite(id) {
 
         ],
 
-        "language": idioma_espanol,
+      
         select: true
     });
 }
@@ -400,9 +374,8 @@ function listar_tramites_enviados() {
         },
         "columns": [
             { "data": "documento_id" },
+            { "data": "doc_nrodocumento" },
             { "data": "tipodo_descripcion" },
-            { "data": "REMITENTE" },
-            { "data": "origen" },
             { "data": "destino" },
             { "defaultContent": `<button class='mas btn btn-primary btn-sm'><i class="fas fa-calendar-plus"></i></button>` },
             { "defaultContent": "<button class='seguimiento btn btn-success btn-sm'><i class='fa fa-search'></i></button>" },
@@ -415,7 +388,7 @@ function listar_tramites_enviados() {
                     } else if (data == 'RECHAZADO') {
                         return '<span class="badge bg-danger">RECHAZADO</span>';
                     } else {
-                        return '<span class="badge bg-success">FINALIZADO</span>';
+                        return '<span class="badge badge-success">Finalizado</span>';
                     }
                 }
             },
@@ -442,4 +415,74 @@ function filterGlobal() {
     $('#tabla_tramite').DataTable().search(
         $('#global_filter').val(),
     ).draw();
+}
+$('#tabla_tramite').on('click', '.seguimiento', function () {
+    var data = tbl_tramite.row($(this).parents('tr')).data();//En tamaño escritorio
+    if (tbl_tramite.row(this).child.isShown()) {
+        var data = tbl_tramite.row(this).data();
+    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
+    $("#modal_seguimiento").modal('show');
+    document.getElementById('lbl_titulo').innerHTML = "SEGUIMIENTO DEL TRAMITE " + data.documento_id;
+    listar_seguimiento_tramite(data.documento_id);
+
+})
+
+$('#tabla_tramite').on('click', '.mas', function () {
+    var data = tbl_tramite.row($(this).parents('tr')).data();//En tamaño escritorio
+    if (tbl_tramite.row(this).child.isShown()) {
+        var data = tbl_tramite.row(this).data();
+    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
+    $("#modal_mas").modal('show');
+     document.querySelector('#remitente').innerHTML=data.REMITENTE
+     document.querySelector('#asunto_mas').innerHTML=data.doc_asunto
+     document.querySelector('#dow').setAttribute('href',`../${data.doc_archivo}`)
+
+   
+})
+$('#tabla_tramite_enviado').on('click', '.mas', function () {
+    var data = tbl_tramite_enviado.row($(this).parents('tr')).data();//En tamaño escritorio
+    if (tbl_tramite_enviado.row(this).child.isShown()) {
+        var data = tbl_tramite_enviado.row(this).data();
+    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
+    $("#modal_mas").modal('show');
+     document.querySelector('#remitente').innerHTML=data.REMITENTE
+     document.querySelector('#asunto_mas').innerHTML=data.doc_asunto
+     document.querySelector('#dow').setAttribute('href',`../${data.doc_archivo}`)
+
+   
+})
+
+$('#tabla_tramite_enviado').on('click', '.seguimiento', function () {
+    var data = tbl_tramite_enviado.row($(this).parents('tr')).data();//En tamaño escritorio
+    if (tbl_tramite_enviado.row(this).child.isShown()) {
+        var data = tbl_tramite_enviado.row(this).data();
+    }//Permite llevar los datos cuando es tamaño celular y usas el responsive de datatable
+    $("#modal_seguimiento").modal('show');
+    document.getElementById('lbl_titulo').innerHTML = "SEGUIMIENTO DEL TRAMITE " + data.documento_id;
+    listar_seguimiento_tramite(data.documento_id);
+
+})
+
+function traerDatosRemitente() {
+    let usuario = $("#txtprincipalid").val();
+    $.ajax({
+        "url": '../controller/usuarioC.php?tipo=traer_data_usuario',
+        type: "POST",
+        data: {
+            usuario: usuario
+
+        }
+    }).done(function (response) {
+        var datos = JSON.parse(response);
+        if (datos.length > 0) {
+            $('.user-name').html(datos[0][1])
+            $('#txt_dni').val(datos[0][14]);
+            $('#txt_nom').val(datos[0][6]);
+            $('#txt_apepat').val(datos[0][7]);
+            $('#txt_apemat').val(datos[0][16]);
+            $('#txt_celular').val(datos[0][13]);
+            $('#txt_email').val(datos[0][8]);
+  
+        }
+    })
 }

@@ -47,6 +47,7 @@
                             <th>Tipo Doc</th>
                             <th>Aréa Origen</th>
                             <th>Mas Datos</th>
+                            <th>Seguimiento</th>
                             <th>Estado Documento</th>
                             <th>Acción</th>
                         </tr>
@@ -75,22 +76,30 @@
 
                         <table style=" border-spacing: 20px;border-collapse: separate;">
                             <tr>
-                                <td><p><b>Remitente</b></p></td>
-                                <td><p id="remitente"> </p> </td>
+                                <td>
+                                    <p><b>Remitente</b></p>
+                                </td>
+                                <td>
+                                    <p id="remitente"> </p>
+                                </td>
                             </tr>
                             <tr>
-                                <td><p><b>Asunto</b>/p></td>
-                                <td><p id="asunto_mas"></p> </td>
+                                <td>
+                                    <p><b>Asunto</b>/p>
+                                </td>
+                                <td>
+                                    <p id="asunto_mas"></p>
+                                </td>
                             </tr>
                             <tr>
                                 <td><b>Archivo</b></td>
-                                <td><a href="#" type="button"  class="btn btn-primary"id="dow" target="_blank"><i class="fas fa-file-alt"></i> Descargar archivo</a></td>
+                                <td><a href="#" type="button" class="btn btn-primary" id="dow" target="_blank"><i class="fas fa-file-alt"></i> Descargar archivo</a></td>
 
                             </tr>
 
                         </table>
                     </div>
-                   
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -99,95 +108,108 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modal_historial" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_derivar" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-
+            <div class="modal-header">
+                <h5 class="modal-title" id="lbl_titulo_derivar">
+                </h5>
+            </div>
             <div class="modal-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>DOCUMENTOS ENVIADOS</h5>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Fecha Registro:</label>
+                        <input type="text" id="txt_fecha_de" class="form-control" readonly style="background-color:white">
                     </div>
-                    <div class="card-body">
-                        <table id="tabla_historial" class="display responsive table" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Nro Doc</th>
-                                    <th>Tipo Doc</th>
-                                    <th>Aréa Localizado</th>
-                                    <th>Estado Documento</th>
-                                    <th>Documento</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-
+                    <div class="col-6">
+                        <label for="" style="font-size:small;">Acción:</label>
+                        <select class="js-example-basic-single" id="select_derivar_de" style="width:100%;">
+                            <option value="DERIVAR">DERIVAR</option>
+                            <option value="FINALIZAR">FINALIZAR</option>
+                        </select>
                     </div>
-                    <div class="card-footer"></div>
+                    <div id="cond">
+                        <div class="col-6 form-group div_derivacion">
+                            <label for="">Área Origen:</label>
+                            <input type="text" id="txt_origen_de" class="form-control" readonly style="background-color:white;width:100%">
+                        </div>
+                        <div class="col-6 form-group div_derivacion">
+                            <label for="">Área Destino:</label>
+                            <select class="js-example-basic-single" id="select_destino_de" style="width:100%;">
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label for="">Anexar documento</label>
+                        <input type="file" id="txt_documento_de" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="">Descripción:</label>
+                        <textarea id="txt_descripcion_de" rows="3" class="form-control" style="resize:none;"></textarea>
+                    </div>
+                    <input type="text" name="" id="txt_idocumento_de" hidden>
+                    <input type="text" id="txt_idareorigen" hidden>
+
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="Registrar_Derivacion()">Registrar</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="modal_derivar"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="lbl_titulo_derivar">
-        </h5>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-            <div class="col-6 form-group">
-                <label for="">Fecha Registro:</label>
-                <input type="text" id="txt_fecha_de" class="form-control" readonly style="background-color:white">
+<div class="modal fade" id="modal_seguimiento" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lbl_titulo">SEGUIMIENTO DEL TRAMITE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="col-6">
-                <label for="" style="font-size:small;">Acción:</label>
-                <select class="js-example-basic-single" id="select_derivar_de" style="width:100%;">
-                    <option value="DERIVAR">DERIVAR</option>
-                    <option value="FINALIZAR">FINALIZAR</option>
-                </select>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table id="tabla_seguimiento" class="display compact" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>PROCEDENCIA</th>
+                                    <th>FECHA</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th>ARCHIVO ANEXADO</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
             </div>
-              
-            <div class="col-6 form-group div_derivacion">
-                  <label for="">Área Origen:</label>
-                  <input type="text" id="txt_origen_de" class="form-control" readonly style="background-color:white;width:100%">
+            <div class="modal-footer">
+
             </div>
-            <div class="col-6 form-group div_derivacion">
-                <label for="">Área Destino:</label>
-                <select class="js-example-basic-single" id="select_destino_de" style="width:100%;">
-                    
-                </select>
-            </div>
-            <div class="col-12 form-group">
-                <label for="">Anexar documento</label>
-                <input type="file" id="txt_documento_de" class="form-control">
-            </div>
-            <div class="col-12">
-              <label for="">Descripción:</label>
-              <textarea id="txt_descripcion_de" rows="3" class="form-control" style="resize:none;"></textarea>
-            </div>
-            <input type="text" name="" id="txt_idocumento_de" hidden>
-            <input type="text" id="txt_idareorigen" hidden>
-      
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" onclick="Registrar_Derivacion()">Registrar</button>
-      </div>
     </div>
-  </div>
-</div>  
+</div>
 
 <script>
-     $('.js-example-basic-single').select2();
+    var tipo_c = document.querySelector("#select_derivar_de").value
+    if (tipo_c == "DERIVAR") {
+        document.querySelector('#cond').style.display = "inherit";
+    } else {
+        document.querySelector('#cond').style.display = "none";
+    }
+
+    $('#select_derivar_de').change(function() {
+        let tipo_c = document.querySelector("#select_derivar_de").value
+        if (tipo_c == "DERIVAR") {
+            document.querySelector('#cond').style.display = "inherit";
+        } else {
+            document.querySelector('#cond').style.display = "none";
+        }
+    })
+    $('.js-example-basic-single').select2();
     fechadefault()
     listar_tramite()
 </script>

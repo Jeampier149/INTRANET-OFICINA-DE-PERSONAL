@@ -116,6 +116,7 @@
         $('.js-example-basic-single').select2();
         Cargar_Select_Area()
         Cargar_Select_Tipo()
+        traerDatosRemitente() 
 
         $(".summernote-simple").summernote({
        dialogsInBody: true,

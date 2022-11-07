@@ -45,20 +45,14 @@
             $tip = strtoupper(htmlspecialchars($_POST['tip'],ENT_QUOTES,'UTF-8'));
     
             $nombrearchivo = strtoupper(htmlspecialchars($_POST['nombrearchivo'],ENT_QUOTES,'UTF-8'));
-            if(isset($nombrearchivo)){
-                $ruta="";
-            }else{
-                $ruta='controller/doc/'.$nombrearchivo;
-            }
-            
+            $ruta='controller/doc/'.$nombrearchivo;            
             $consulta = $MU->Registrar_Tramite($iddo,$orig,$dest,$desc,$idusu,$ruta,$tip);
-            echo $consulta;
-            if($consulta==1){
-                if(!isset($nombrearchivo)){
+            if($consulta){
+                if($nombrearchivo!=""){
                     if(move_uploaded_file($_FILES['archivoobj']['tmp_name'],"doc/".$nombrearchivo));
                 }
             }
+            echo $consulta;
             break;
        
     }
-?>

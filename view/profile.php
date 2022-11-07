@@ -1,5 +1,5 @@
 <div class="section-body">
-    <h2 class="section-title">Hola, Ujang!</h2>
+    <h2 class="section-title">Hola!</h2>
     <p class="section-lead">
         Actualizar información.
     </p>
@@ -84,9 +84,10 @@
 </div>
 <script>
     $(document).ready(function() {
+        traerDatosUsuario()
+        traerDatosProfile()
         $('.js-example-basic-single').select2();
     });
-    traerDatosProfile()
-    traerDatosUsuario()
+ 
 
 </script>

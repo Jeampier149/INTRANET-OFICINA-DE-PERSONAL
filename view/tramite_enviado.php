@@ -42,7 +42,6 @@
                             <th>Nro Seguimiento</th>
                             <th>Nro Doc</th>
                             <th>Tipo Doc</th>
-                            <th>Aréa Origen</th>
                             <th>Aréa Localizado</th>
                             <th>Mas Datos</th>
                             <th>Seguimiento</th>
@@ -57,34 +56,46 @@
     </div>
 </section>
 <script src="../js/console_tramite_area.js"></script>
-<div class="modal fade" id="modal_mdatos" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade" id="modal_mas" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">MAS DATOS DEL DOCUMENTO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
             <div class="modal-body">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>DATOS DEL DOCUMENTO</h5>
-                    </div>
                     <div class="card-body">
 
                         <table style=" border-spacing: 20px;border-collapse: separate;">
                             <tr>
-                                <td><b>Remitente</b></td>
-                                <td>Alfredo Benavides Duarez</td>
+                                <td>
+                                    <p><b>Remitente</b></p>
+                                </td>
+                                <td>
+                                    <p id="remitente"> </p>
+                                </td>
                             </tr>
                             <tr>
-                                <td><b>Asunto</b></td>
-                                <td>El tardofranquismo constituye la última etapa de la dictadura franquista que termina con la muerte de Francisco Franco el 20 de noviembre de 1975. Se suele situar su comienzo en octubre de 1969 cuando se forma el gobierno «monocolor» presidido</td>
+                                <td>
+                                    <p><b>Asunto</b>/p>
+                                </td>
+                                <td>
+                                    <p id="asunto_mas"></p>
+                                </td>
                             </tr>
                             <tr>
                                 <td><b>Archivo</b></td>
+                                <td><a href="#" type="button" class="btn btn-primary" id="dow" target="_blank"><i class="fas fa-file-alt"></i> Descargar archivo</a></td>
 
                             </tr>
 
                         </table>
                     </div>
-                    <div class="card-footer"></div>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -93,6 +104,41 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modal_seguimiento" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lbl_titulo">SEGUIMIENTO DEL TRAMITE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table id="tabla_seguimiento" class="display compact" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>PROCEDENCIA</th>
+                                    <th>FECHA</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th>ARCHIVO ANEXADO</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <script>
