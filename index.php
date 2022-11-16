@@ -14,8 +14,7 @@ if (isset($_SESSION['S_ID'])) {
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.72.0">
-  <title>Album example · Bootstrap</title>
-
+  <title>OFICINA DE PERSONAL</title>
   <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/album/">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">

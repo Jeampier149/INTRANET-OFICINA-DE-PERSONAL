@@ -3658,8 +3658,13 @@ body.layout-3 .main-wrapper {
 }
 .danger ,.badge-danger ,.btn-danger , .danger:hover{
   background-color: #464555!important;
+  color:white;
 }
 
+.editable {
+  background-color: #a6a5d3!important;
+  color:white;
+}
 .badge-warning{
   background-color: #3E908D!important;
   color:white;

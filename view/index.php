@@ -158,7 +158,8 @@ if (!isset($_SESSION['S_ID'])) {
                 <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','tramite_enviado.php')">Documentos Enviados</a></li>
                 <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','scandoc.php')">Documentos Guardados</a></li>
                 <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','resumen/resumen.php')">Resumen</a></li>
-                </ul>
+                <li><a class="nav-link" onclick="cargar_contenido('contenido_principal','descuentos.php')">Verificar Descuentos</a></li>
+              </ul>
               </li>
             <?php } ?>
             <?php if ($_SESSION['S_AREA'] == '4' || $_SESSION['S_ROL'] == 'Administrador') { ?>
@@ -232,7 +233,7 @@ if (!isset($_SESSION['S_ID'])) {
           <div class="card sombrear">
             <div class="card-body">
               <div class="contenido mb-4" id="contenido_principal">
-             
+          <?php require 'profile.php'?>
               </div>
             </div>
           </div>

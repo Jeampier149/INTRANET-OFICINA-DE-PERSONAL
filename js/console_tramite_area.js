@@ -49,7 +49,7 @@ function listar_tramite() {
                     } else if (data == 'RECHAZADO') {
                         return '<span class="badge bg-danger">RECHAZADO</span>';
                     } else {
-                        return '<span class="badge bg-success">FINALIZADO</span>';
+                        return '<span class="badge badge-success">Finalizado</span>';
                     }
                 }
             },

@@ -24,7 +24,6 @@
         public function Registrar_Scan($ndoc,$tdoc,$asun,$idusu,$idarea,$ruta){
             $c = conexionBD::conexionPDO();
             $sql = "CALL SP_REGISTRAR_SCAN(?,?,?,?,?,?)";
-            $arreglo = array();
             $query  = $c->prepare($sql);
             $query -> bindParam(1,$ndoc);
             $query -> bindParam(2,$tdoc);
@@ -39,14 +38,27 @@
             conexionBD::cerrar_conexion();
         }
 
-        public function Modificar_Scan($id,$area,$esta){
+        public function Editar_Scan($ndoc,$ndoc_actual,$tipo,$asun,$iddoc){
             $c = conexionBD::conexionPDO();
-            $sql = "CALL SP_MODIFICAR_SCAN(?,?,?)";
-            $arreglo = array();
+            $sql = "CALL SP_EDITAR_SCAN(?,?,?,?,?)";
             $query  = $c->prepare($sql);
-            $query -> bindParam(1,$id);
-            $query -> bindParam(2,$area);
-            $query -> bindParam(3,$esta);
+            $query -> bindParam(1,$ndoc);
+            $query -> bindParam(2,$ndoc_actual);
+            $query -> bindParam(3,$tipo);
+            $query -> bindParam(4,$asun);
+            $query -> bindParam(5,$iddoc);
+            $query->execute();
+            if($row = $query->fetchColumn()){
+                    return $row;
+            }
+            conexionBD::cerrar_conexion();
+        }
+        public function Editar_doc_scan($iddoc,$ruta){
+            $c = conexionBD::conexionPDO();
+            $sql = "CALL SP_MODIFICAR_DOC_SCAN(?,?)";
+            $query  = $c->prepare($sql);
+            $query -> bindParam(1,$iddoc);
+            $query -> bindParam(2,$ruta);
             $query->execute();
             if($row = $query->fetchColumn()){
                     return $row;
